@@ -24,37 +24,39 @@ void insert_begin(struct node **head, int val){
     *head=p;
 }
 
-void append(struct node*head, int val){
-    struct node *p=head;
-    while(p->next!=NULL){
-        p=p->next;
+void append(struct node *head, int val){
+    while(head->next != NULL){
+        head=head->next;
     }
-    p->next=(struct node *)malloc(sizeof(struct node));
-    p=p->next;
-    p->val=val;
-    p->next=NULL;
+    head->next=(struct node *)malloc(sizeof(struct node));
+    head=head->next;
+    head->val=val;
+    head->next=NULL;
 }
 
 void display(struct node *head){
-    struct node *p=head;
-    printf("START\n");
-    while(p != NULL){
-        printf("%d ", p->val);
-        p=p->next;
+    printf("DISPLAY: ");
+    while(head != NULL){
+        printf("%d ", head->val);
+        head=head->next;
     }
-    printf("\nEND\n");
+    printf("\n");
 }
 
-void insert_after(struct node*head, int fval, int ival){
-    struct node *p=head;
-    while(p->val != fval){
-        p=p->next;
+void insert_after(struct node *head, int fval, int ival){
+    while(head != NULL && head->val != fval){
+        head=head->next;
     }
-    struct node *temp = p->next;
-    p->next=(struct node *)malloc(sizeof(struct node));
-    p=p->next;
-    p->val=ival;
-    p->next=temp;
+    if(head == NULL){
+        printf("Given element %d not found!!\n",fval);
+    }
+    else{
+        struct node *temp = head->next;
+        head->next=(struct node *)malloc(sizeof(struct node));
+        head=head->next;
+        head->val=ival;
+        head->next=temp;
+    }
 }
 
 void delete(struct node**head, int val){
@@ -65,12 +67,17 @@ void delete(struct node**head, int val){
     }
     else{
         struct node *p=*head;
-        while(p->next->val != val){
+        while(p->next != NULL && p->next->val != val){
             p=p->next;
         }
-        struct node *temp = p->next->next;
-        free(p->next);
-        p->next=temp;
+        if(p->next == NULL){
+            printf("Element %d not found to be deleted!!\n", val);
+        }
+        else{
+            struct node *temp = p->next->next;
+            free(p->next);
+            p->next=temp;
+        }
     }
 }
 
@@ -82,9 +89,11 @@ int main(){
     append(head, 5);
     insert_begin(&head, 0);
     display(head);
+    insert_after(head, 99, 9);
     insert_after(head, 0, 9);
     display(head);
     delete(&head,0);
+    delete(&head, 99);
     display(head);
     
     free(head);
