@@ -34,26 +34,18 @@ void display(struct node *head){
 }
 
 void reverse(struct node **head){
-    struct node *prv, *p, *nxt;
-    prv = (*head);
-    p = (*head)->next;
-    if(p != NULL){
-        if(p->next == NULL){
+    if((*head)->next != NULL){
+        struct node *prv=NULL;
+        struct node *p=(*head);
+        struct node *nxt=p;
+        while(p != NULL){
+            nxt=nxt->next;
             p->next=prv;
-            prv->next=NULL;
-            (*head)=p;
+            // p->prev=nxt;
+            prv=p;
+            p=nxt;
         }
-        else{
-            nxt=p;
-            while(p != NULL){
-                nxt=nxt->next;
-                p->next=prv;
-                prv=p;
-                p=nxt;
-            }
-            (*head)->next=NULL;
-            (*head) = prv;
-        }
+        (*head)=prv;
     }
 }
 
