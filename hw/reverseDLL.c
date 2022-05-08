@@ -7,6 +7,13 @@ struct node{
     struct node * prev;
 };
 
+void create_head(struct node **, int);
+void append(struct node *, int);
+void display(struct node* );
+void insert_after(struct node *, int, int);
+int delete_at(struct node **, int);
+void reverse(struct node **);
+
 void create_head(struct node **head, int val){
     if((*head) == NULL){
         (*head) = (struct node*)malloc(sizeof(struct node));
@@ -101,15 +108,18 @@ int main(){
     
     //to create or update head use create_head function
     create_head(&head, 4);
+    
     append(head, 3);
     append(head, 2);
+    
     create_head(&head, 0);
+    
     append(head, 5);
+    
     display(head);
     
     insert_after(head, 5, 9);
     display(head);
-    
     
     //note ll/dll are zero based
     delete_at(&head, 1);
