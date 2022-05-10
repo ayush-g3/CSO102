@@ -1,1 +1,1 @@
-Repo for CSO102 LAB and Homework
+Repo for CSO102 LAB, Homework and practice.

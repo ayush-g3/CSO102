@@ -6,6 +6,10 @@ struct node{
     struct node *next;
 };
 
+
+void append(struct node **, int);
+void display(struct node *);
+
 void append(struct node **last, int val){
     if((*last) == NULL){
         (*last) = (struct node *)malloc(sizeof(struct node));
