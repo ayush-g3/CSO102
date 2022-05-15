@@ -66,7 +66,7 @@ char* infix_to_postfix(char *exp){
                 tmp = pop(stack);
             }
         }
-        else if(t != '\0'){
+        else if(t != '\0' && t != ' '){
             repeat:
             if(isEmpty(stack) || peek(stack) == '('){
                 push(stack, t);
@@ -93,7 +93,7 @@ char* infix_to_postfix(char *exp){
                 }
             }
         }
-        else{
+        else if(t != ' '){
             char tmp = pop(stack);
             while(tmp != 0){
                 res[j++]=tmp;

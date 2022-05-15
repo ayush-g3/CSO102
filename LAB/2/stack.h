@@ -9,6 +9,15 @@ struct Stack{
     int *arr;
 };
 
+// typedef struct Stack Stack;
+/*
+typedef struct Stack{
+    int top;
+    unsigned capacity;
+    int *arr;
+} Stack;
+*/
+
 struct Stack* createStack(unsigned capacity);
 void deleteStack(struct Stack *stack);
 int isEmpty(struct Stack *stack);

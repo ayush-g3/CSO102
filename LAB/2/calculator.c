@@ -7,8 +7,8 @@ int main(){
     unsigned max_length = 30;
     char exp[max_length];
     
-    // strcpy(exp, "2^4");
-    scanf("%s",exp);
+    strcpy(exp, " 2 ^ 4 +1");
+    // scanf("%s",exp);
     
     char *postfix = infix_to_postfix(exp);
     printf("%d" ,eval_postfix(postfix));
