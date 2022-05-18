@@ -43,7 +43,7 @@ int isEmpty(struct Stack *stack){
     return stack->top == -1;
 }
 int isFull(struct Stack *stack){
-    return stack->top == stack->capacity;
+    return stack->top == stack->capacity-1;
 }
 int push(struct Stack *stack, int val){
     if(isFull(stack)) return 0;
