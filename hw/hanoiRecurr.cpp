@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 int hanoi(int n, char S, char A, char D, int moves = 0){
@@ -23,5 +22,5 @@ int main(){
     int moves;
     //move all discs from tower1 to tower3
     moves = hanoi(n, 's', 'a' , 'd');
-    cout << moves ;
+    cout << "total moves: " << moves ;
 }

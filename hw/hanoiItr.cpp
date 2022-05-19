@@ -17,4 +17,5 @@ int main(){
                 break;
         }
     }
+    cout << "total moves: " << moves ;
 }
