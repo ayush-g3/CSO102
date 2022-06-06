@@ -10,6 +10,7 @@ struct Stack{
 };
 
 // typedef struct Stack Stack;
+
 /*
 typedef struct Stack{
     int top;

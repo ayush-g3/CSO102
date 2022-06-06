@@ -1,20 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int hanoi(int n, char S, char A, char D, int moves = 0){
-    moves = 0;
-    if( n <= 0 );
+int hanoi(int n, char S, char A, char D){
+    if( n <= 0 ) return 0;
     if( n == 1){
-        cout << "move disc from " << S << " to " << D << "\n";
-        ++moves;
+        cout << "move disc "<< n <<" from " << S << " to " << D << "\n";
     }
     else{
-        moves += hanoi(n-1, S, D, A, 0);
-        cout << "move disc from " << S << " to " << D << "\n";
-        ++moves;
-        moves += hanoi(n-1, A, S, D, 0);
+        hanoi(n-1, S, D, A);
+        cout << "move disc " << n << " from " << S << " to " << D << "\n";
+        hanoi(n-1, A, S, D);
     }
-    return moves;
+    return pow(2, n) - 1;
 }
 
 int main(){
