@@ -7,10 +7,11 @@ int main(){
     unsigned max_length = 30;
     char exp[max_length];
     
-    strcpy(exp, " 2 ^ 4 +1");
+    strcpy(exp, "1+2+3*4");
     // scanf("%s",exp);
     
     char *postfix = infix_to_postfix(exp);
+    // printf("%s\n", postfix);
     printf("%d" ,eval_postfix(postfix));
     return 0;
 }

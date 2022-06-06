@@ -2,7 +2,7 @@
 #define EVALUATE_POSTFIX_H
 
 #include <math.h>
-#include "infix_to_postfix.h"
+#include "stack.h"
 
 int eval(int a, char op, int b);
 int eval_postfix(char *postfix);
