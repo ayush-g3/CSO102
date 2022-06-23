@@ -1,39 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct BST{
+typedef struct node{
     char val;
-    struct BST *left, *right;
-} BST;
+    struct node *left, *right;
+} NODE;
 
-BST* create_node(char val);
-void insert(BST **node, char val);
-void print_inorder(BST *node);
-void print_preorder(BST *node);
-void print_postorder(BST *node);
-int check_mirror(BST *root1, BST *root2);
+NODE* create_node(char val);
+void insert_BST(NODE **node, char val);
+void print_inorder(NODE *node);
+void print_preorder(NODE *node);
+void print_postorder(NODE *node);
+int check_mirror(NODE *root1, NODE *root2);
 
-BST* create_node(char val){
-    BST *node = (BST *)malloc(sizeof(BST));
+NODE* create_node(char val){
+    NODE *node = (NODE *)malloc(sizeof(NODE));
     node->val=val;
     node->left=node->right=NULL;
     return node;
 }
 
-void insert(BST **node, char val){
+void insert_BST(NODE **node, char val){
     if(*node == NULL){
         *node = create_node(val);
         return;
     }
     if((*node)->val >= val){
-        insert(&((*node)->left), val);
+        insert_BST(&((*node)->left), val);
     }
     else{
-        insert(&((*node)->right), val);
+        insert_BST(&((*node)->right), val);
     }
 }
 
-void print_inorder(BST *node){
+void print_inorder(NODE *node){
     if(node == NULL){
         return;
     }
@@ -42,7 +42,7 @@ void print_inorder(BST *node){
     print_inorder(node->right);
 }
 
-void print_preorder(BST *node){
+void print_preorder(NODE *node){
     if(node == NULL){
         return;
     }
@@ -51,7 +51,7 @@ void print_preorder(BST *node){
     print_inorder(node->right);
 }
 
-void print_postorder(BST *node){
+void print_postorder(NODE *node){
     if(node == NULL){
         return;
     }
@@ -60,7 +60,7 @@ void print_postorder(BST *node){
     printf("%c ", node->val);
 }
 
-int check_mirror(BST *root1, BST *root2){
+int check_mirror(NODE *root1, NODE *root2){
     if(root1 == NULL && root2 == NULL){
         return 1;
     }
@@ -76,20 +76,20 @@ int check_mirror(BST *root1, BST *root2){
 
 int main(){
     // a
-    BST *root = NULL;
+    NODE *root = NULL;
     
-    insert(&root, 'd');
-    insert(&root, 'b');
-    insert(&root, 'c');
-    insert(&root, 'a');
+    insert_BST(&root, 'd');
+    insert_BST(&root, 'b');
+    insert_BST(&root, 'c');
+    insert_BST(&root, 'a');
     
     // b
     print_inorder(root);
     printf("\n\n");
     
     // c
-    BST *root1 = NULL;
-    BST *root2 = NULL;
+    NODE *root1 = NULL;
+    NODE *root2 = NULL;
     
     root1=create_node('d');
     root1->left=create_node('b');

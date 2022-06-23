@@ -1,31 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class BST{
+class NODE{
     public:
         char val;
-        BST *left, *right;
+        NODE *left, *right;
         
-        BST(char v){
+        NODE(char v){
             val=v;
             left=right=NULL;
         }
 };
 
-void insert(BST *& root, char v){
+void insert_BST(NODE *& root, char v){
     if(root == NULL){
-        root = new BST(v);
+        root = new NODE(v);
         return;
     }
     if((root)->val >= v){
-        insert(root->left, v);
+        insert_BST(root->left, v);
     }
     else{
-        insert(root->right, v);
+        insert_BST(root->right, v);
     }
 }
 
-void print_inorder(BST *root){
+void print_inorder(NODE *root){
     if(root == NULL){
         return;
     }
@@ -34,7 +34,7 @@ void print_inorder(BST *root){
     print_inorder(root->right);
 }
 
-void print_preorder(BST *root){
+void print_preorder(NODE *root){
     if(root == NULL){
         return;
     }
@@ -43,7 +43,7 @@ void print_preorder(BST *root){
     print_inorder(root->right);
 }
 
-void print_postorder(BST *root){
+void print_postorder(NODE *root){
     if(root == NULL){
         return;
     }
@@ -53,12 +53,12 @@ void print_postorder(BST *root){
 }
 
 int main(){
-    BST *root = NULL;
+    NODE *root = NULL;
     
-    insert(root, 'b');
-    insert(root, 'a');
-    insert(root, 'c');
-    insert(root, 'd');
+    insert_BST(root, 'b');
+    insert_BST(root, 'a');
+    insert_BST(root, 'c');
+    insert_BST(root, 'd');
     
     print_inorder(root);
     return 0;
