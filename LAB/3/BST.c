@@ -47,16 +47,16 @@ void print_preorder(NODE *node){
         return;
     }
     printf("%c ", node->val);
-    print_inorder(node->left);
-    print_inorder(node->right);
+    print_preorder(node->left);
+    print_preorder(node->right);
 }
 
 void print_postorder(NODE *node){
     if(node == NULL){
         return;
     }
-    print_inorder(node->left);
-    print_inorder(node->right);
+    print_postorder(node->left);
+    print_postorder(node->right);
     printf("%c ", node->val);
 }
 
