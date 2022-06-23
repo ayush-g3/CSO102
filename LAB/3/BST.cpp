@@ -39,16 +39,16 @@ void print_preorder(NODE *root){
         return;
     }
     cout << root->val << " ";
-    print_inorder(root->left);
-    print_inorder(root->right);
+    print_preorder(root->left);
+    print_preorder(root->right);
 }
 
 void print_postorder(NODE *root){
     if(root == NULL){
         return;
     }
-    print_inorder(root->left);
-    print_inorder(root->right);
+    print_postorder(root->left);
+    print_postorder(root->right);
     cout << root->val << " ";
 }
 
